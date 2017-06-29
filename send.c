@@ -1337,8 +1337,10 @@ ci_send_message (int flags,		/* send mode */
         mutt_set_parameter ("format", "flowed", &msg->content->parameter);
     }
 
-    if (option (OPTUSEFROMASBCC))
+    if (option (OPTUSEFROMASBCC)) {
+          rfc822_free_address (&msg->env->bcc);
           msg->env->bcc = mutt_default_from ();
+    }
     /* $use_from and/or $from might have changed in a send-hook */
     if (killfrom)
     {
