@@ -1343,7 +1343,7 @@ ci_send_message (int flags,		/* send mode */
       rfc822_free_address (&msg->env->from);
       if (option (OPTUSEFROM) && !(flags & (SENDPOSTPONED|SENDRESEND))) {
         msg->env->from = mutt_default_from ();
-        if (option (OPTUSEFROMASBCC)
+        if (option (OPTUSEFROMASBCC))
           msg->env->bcc = mutt_default_from ();
       }
       killfrom = 0;
